@@ -1,9 +1,5 @@
 var express = require('express')
-  , connect = require('connect')
-  , mongoose = require('mongoose')
-  , mongoURI = process.env['MONGO_URI'] || 'mongodb://localhost/sms'
-  , db = mongoose.connect(mongoURI)
-  , RedisStore = require('connect-redis')(express);
+  , connect = require('connect');
 
   
 try {
@@ -18,8 +14,7 @@ module.exports = function(app){
       .set('public', __dirname + '/public')
       .enable('jsonp callback')
       .enable('error templates')
-      .use(express.static(__dirname + '/public'))
-      .set('db', db);
+      .use(express.static(__dirname + '/public'));
   });
 
   // Dev
@@ -39,7 +34,6 @@ module.exports = function(app){
     this
       .use(express.logger({buffer: 10000}))
       .use(connect.cookieParser('tiutiuti454545utiutiut'))
-      .use(connect.session({ store: new RedisStore, secret: 'keybsdfsdfoardy cat' }))
       .use(express.errorHandler({dumpExceptions: true, showStack: true}))
       .enable('prod')
       .set('domain', 'fell-transit-display.herokuapp.com');
