@@ -1,15 +1,32 @@
-jQuery.fn.orderBy = function(keySelector) {
-    return this.sort(function(a,b)
-    {
-        a = keySelector.apply(a);
-        b = keySelector.apply(b);
-        if (a > b)
-            return 1;
-        if (a < b)
-            return -1;
-        return 0;
-    });
-};
+var nearby = [
+  {
+      name: 'Falletti Foods'
+    , url: 'http://www.yelp.com/biz/falletti-foods-san-francisco'
+    , hours: {
+        all: [7,21]
+    }
+  },
+  {
+      name: 'The Page'
+    , url: 'http://www.yelp.com/biz/the-page-san-francisco'
+    , hours: {
+        all: [17,26]
+    }
+  },
+  {
+      name: 'Little Star'
+    , url: 'http://www.yelp.com/biz/little-star-pizza-san-francisco'
+    , hours: {
+        mon: [17,22]
+      , tue: [17,22]
+      , wed: [17,22]
+      , thu: [17,22]
+      , fri: [12,23]
+      , sat: [12,23]
+      , sun: [12,22]
+    }
+  },
+]
 
 function updateClock() {
   var currentTime = new Date(),
@@ -112,8 +129,6 @@ function getMUNI(){
         $(result).find('prediction').each(function(i, data){
           //Limit to 3 results, only show times less than 100, don't show results that are 0
           if(idx < 3 && $(data).attr('minutes') < 100 && $(data).attr('minutes') > 0){
-            console.log(idx)
-            console.log($(data).attr('minutes'))
             $('.time', div).eq(idx).html($(data).attr('minutes'));
             
             idx++;
@@ -129,6 +144,31 @@ function getMUNI(){
   }
 }
 
+function checkOpen(){
+  nearby.forEach(function(place){
+    var divName = place.name.replace(/\s/g, ''),
+        div = $('#' + divName),
+        currentTime = new Date(),
+        currentHours = currentTime.getHours();
+
+    console.log(currentHours)
+
+    if(!div.length) {
+      var div = $('<div>')
+        .addClass('place')
+        .attr('id', 'divName')
+        .append($('<div>')
+          .addClass('status'))
+        .append($('<div>')
+          .addClass('storeName')
+          .html(place.name))
+        .appendTo('#nearby');
+    } else {
+
+    }
+  });
+}
+
 
 $(document).ready(function(){
 
@@ -136,6 +176,10 @@ $(document).ready(function(){
   setInterval(updateClock, 1000);
   
   //Get MUNI
-  getMUNI()
+  getMUNI();
   setInterval(getMUNI, 15000);
+
+  //check open times
+  checkOpen();
+  setInterval(checkOpen, 60000);
 });
