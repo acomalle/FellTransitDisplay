@@ -146,12 +146,17 @@ function getMUNI(){
 
 function checkOpen(){
   var currentTime = new Date(),
-      currentHours = currentTime.getHours();
+      currentHours = currentTime.getHours(),
+      currentDay = currentTime.getDay();
   nearby.forEach(function(place){
     var divName = place.name.replace(/\s/g, ''),
-        div = $('#' + divName);
+        div = $('#' + divName),
+        hours = place.hours.all || 
+    if(place.hours.all) {
 
-    if(currentHours < place.hours[0])
+    } else {
+
+    }
 
     if(!div.length) {
       var div = $('<div>')
