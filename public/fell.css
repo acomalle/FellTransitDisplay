@@ -4,6 +4,8 @@ body, html {
 	margin: 0;
 	padding: 0;
 	font-family: 'Roboto', sans-serif;
+	width: 100%;
+	height: 100%;
 }
 #foursquare {
 	width: 100%;
@@ -43,3 +45,63 @@ body, html {
 	opacity: 0.75;
 	padding: 0 10px 0 0;
 }
+#main {
+
+}
+.nearby {
+	background: rgba(255,255,255,0.05);
+	padding: 0 20px;
+}
+#main .grid-three {
+	width: 33.333%;
+	height: auto;
+	min-height: 20px;
+	float: left;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+h3 {
+	text-transform: uppercase;
+}
+.place {
+	border: 2px solid #2f363c;
+	display: block;
+	float: left;
+	clear: both;
+	width: 100%;
+	position: relative;
+}
+.place .open {
+	width: 18px;
+	height: 18px;
+	background: url(img/open.png) no-repeat;
+	margin: 17px;
+	float: left;
+}
+.place .closed {
+	width: 18px;
+	height: 18px;
+	background: url(img/closed.png) no-repeat;
+	margin: 17px;
+	float: left;
+}
+.place .closing {
+	width: 18px;
+	height: 18px;
+	background: url(img/closing.png) no-repeat;
+	margin: 17px;
+	float: left;
+}
+.place p {
+	float: left;
+}
+.place span {
+	position: absolute;
+	right: 10px;
+	top: 20px;
+	font-size: 15px;
+}
+
+
+
