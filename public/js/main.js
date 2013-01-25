@@ -155,21 +155,22 @@ function getMUNI(){
         var div = $('#' + divName);
 
         if(!div.length) {
-          var div = $('<div>')
-            .addClass('muni')
-            .attr('id', divName)
-            .append($('<div>')
-              .addClass('busnumber')
-              .html(route.toString()))
-            .append($('<div>')
-              .addClass('nextbus time'))
-            .append($('<div>')
-              .addClass('laterbuses')
-              .append($('<div>')
-                .addClass('time'))
-              .append($('<div>')
-                .addClass('time')))
-            .appendTo('#times');
+          var routeName = route.toString().replace(/OWL/g, '<span>OWL</span>'),
+              div = $('<div>')
+                .addClass('muni')
+                .attr('id', divName)
+                .append($('<div>')
+                  .addClass('busnumber')
+                  .html(routeName))
+                .append($('<div>')
+                  .addClass('nextbus time'))
+                .append($('<div>')
+                  .addClass('laterbuses')
+                  .append($('<div>')
+                    .addClass('time'))
+                  .append($('<div>')
+                    .addClass('time')))
+                .appendTo('#times');
         } else {
           //Clear old times
           $('.time', div).html('');
@@ -205,7 +206,7 @@ function checkOpen(){
     var divName = place.name.replace(/\s/g, ''),
         div = $('#' + divName),
         hours = place.hours.all || place.hours[currentDay] || null,
-        currentHours = (currentHours < 4) ? currentHours + 24 : currentHours,
+        currentHours = (currentHours < 4) ? (currentHours + 24) : currentHours,
         status;
 
 
@@ -221,7 +222,8 @@ function checkOpen(){
           .html(place.name))
         .appendTo('#nearby');
     }
-
+    console.log(hours)
+    console.log(currentHours)
     if(currentHours < hours[0] || currentHours > hours[1]) {
       status = 'closed';
     } else if(currentHours == (hours[1] - 1) ) {
