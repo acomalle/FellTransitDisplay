@@ -72,38 +72,42 @@ h3 {
 	width: 100%;
 	position: relative;
 }
-.place .open {
+.place .countdown {
+	display: none;
+	position: absolute;
+	right: 10px;
+	top: 20px;
+	font-size: 15px;
+}
+.place[data-status="open"] .status] {
 	width: 18px;
 	height: 18px;
 	background: url(img/open.png) no-repeat;
 	margin: 17px;
 	float: left;
 }
-.place .closed {
+.place[data-status="closed"] .status {
 	width: 18px;
 	height: 18px;
 	background: url(img/closed.png) no-repeat;
 	margin: 17px;
 	float: left;
 }
-.place .closing {
+.place[data-status="closing"] .status {
 	width: 18px;
 	height: 18px;
 	background: url(img/closing.png) no-repeat;
 	margin: 17px;
 	float: left;
 }
+.place[data-status="closing"] .countdown {
+	display: block;
+}
 .place .storeName {
 	float: left;
 	color: white;
 	text-decoration: none;
 	margin: 1em 0;
-}
-.place span {
-	position: absolute;
-	right: 10px;
-	top: 20px;
-	font-size: 15px;
 }
 .muni {
 	float: left;

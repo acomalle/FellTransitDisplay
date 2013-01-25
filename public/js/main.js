@@ -226,7 +226,7 @@ function checkOpen(){
     currentDay -= 1;
   }
   nearby.forEach(function(place){
-    var divName = place.name.replace(/\s/g, ''),
+    var divName = place.name.replace(/[!\"#$%&'\(\)\*\+,\.\/:;<=>\?\@\[\\\]\^`\{\|\}~\s]/g, ''),
         div = $('#' + divName),
         hours = place.hours.all || place.hours[currentDay],
         status;
@@ -234,7 +234,7 @@ function checkOpen(){
     if(!div.length) {
       var div = $('<div>')
         .addClass('place')
-        .attr('id', 'divName')
+        .attr('id', divName)
         .append($('<div>')
           .addClass('status'))
         .append($('<a>')
@@ -248,22 +248,29 @@ function checkOpen(){
 
     if(currentHours < hours[0] || currentHours > hours[1]) {
       status = 'closed';
-      $('.countdown', div).empty();
     } else if(currentHours == (hours[1] - 1) ) {
       status = 'closing';
-      $('.countdown', div).html(((currentMinutes - 60) * -1) + " min");
     } else {
       status = 'open';
-      $('.countdown', div).empty();
     }
-    $('.status', div)
-      .removeClass('open closed closing')
-      .addClass(status);
-
+    $(div).attr('data-status', status);
+    $('.countdown', div).html(((currentMinutes - 60) * -1) + " min");
   });
 
   //sort
-  $(".contest_entry").orderBy(function() {return +$(this).text();}).appendTo("#parent_div");
+  $("#nearby .place").orderBy(function() {
+    switch($(this).data('status')){
+      case 'open':
+        return 0;
+        break;
+      case 'closing':
+        return 1;
+        break;
+      case 'closed':
+        return 2;
+        break;
+    }
+  }).appendTo("#nearby");
 }
 
 
