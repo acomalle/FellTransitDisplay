@@ -246,7 +246,7 @@ function checkOpen(){
         .appendTo('#nearby');
     }
 
-    if(currentHours < hours[0] || currentHours > hours[1]) {
+    if(currentHours < hours[0] || currentHours >= hours[1]) {
       status = 'closed';
     } else if(currentHours == (hours[1] - 1) ) {
       status = 'closing';
