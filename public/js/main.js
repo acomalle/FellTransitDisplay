@@ -116,7 +116,7 @@ function updateClock() {
 
 
 
-function getMUNI(){
+function updateMUNI(){
   //Define Muni Roures
   var MUNIroutes = [
     {
@@ -215,7 +215,7 @@ function getMUNI(){
   });
 }
 
-function checkOpen(){
+function updatePlaces(){
   var currentTime = new Date(),
       currentMinutes = currentTime.getMinutes(),
       currentHours = currentTime.getHours(),
@@ -299,6 +299,35 @@ function updateFoursquare() {
   });
 }
 
+function updateInstagram() {
+  $('#instagram .picture').remove();
+  $.getJSON('/api/instagram.json', function(data) {
+    if(data.length) {
+      data.forEach(function(picture) {
+        var createdAt = new Date(picture.created_time*1000);
+        $('<div>')
+          .addClass('picture')
+          .append($('<img>')
+            .attr('src', picture.images.standard_resolution.url))
+          .append($('<div>')
+            .addClass('userInfo')
+            .html(picture.user.full_name)
+            .append($('<span>')
+              .addClass('timeago')
+              .attr('title', createdAt.toISOString())))
+          .appendTo('#instagram .scroll-wrap');
+      });
+      $('#instagram .timeago').timeago()
+    }
+  });
+}
+
+function scrollInstagram() {
+  var height = $('#instagram').width(),
+      top = parseInt($('#instagram .scroll-wrap').css('top'), 10) || 0;
+  $('#instagram .scroll-wrap').animate({top: (top - height)}, 800);
+}
+
 
 $(function(){
 
@@ -306,14 +335,21 @@ $(function(){
   setInterval(updateClock, 1000);
   
   //Get MUNI every 15 seconds
-  getMUNI();
-  setInterval(getMUNI, 15000);
+  updateMUNI();
+  setInterval(updateMUNI, 15000);
 
   //check open times every minute
-  checkOpen();
-  setInterval(checkOpen, 60000);
+  updatePlaces();
+  setInterval(updatePlaces, 60000);
 
   //update Foursquare every 5 minutes
   updateFoursquare();
   setInterval(updateFoursquare, 300000);
+
+  //update Instagram every 30 minutes 
+  updateInstagram();
+  setInterval(updateInstagram, 1800000);
+
+  //scroll Instagram every 15 seconds
+  setInterval(scrollInstagram, 15000);
 });
