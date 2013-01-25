@@ -273,17 +273,47 @@ function checkOpen(){
   }).appendTo("#nearby");
 }
 
+function updateFoursquare() {
+  $.getJSON('/api/foursquare.json', function(data) {
+    if(data && data.response) {
+      data.response.recent.forEach(function(checkin) {
+        var div;
+        if(checkin.user.id == "4103624") {
+          div = $('#joakim_foursquare');
+        } else if(checkin.user.id == "2045886") {
+          div = $('#trucy_foursquare');
+        } else if(checkin.user.id == "2562440") {
+          div = $('#mikael_foursquare');
+        }
+        if(div) {
+          $('a', div)
+            .html(checkin.venue.name)
+            .attr('href', checkin.venue.canonicalUrl);
+          var createdAt = new Date(checkin.createdAt * 1000);
+          $('cite', div)
+            .attr('title', createdAt.toISOString());
+        }
+      });
+      $('#foursquare cite').timeago();
+    }
+  });
+}
 
-$(document).ready(function(){
 
-  //Update Clock
+$(function(){
+
+  //Update Clock every second
   setInterval(updateClock, 1000);
   
-  //Get MUNI
+  //Get MUNI every 15 seconds
   getMUNI();
   setInterval(getMUNI, 15000);
 
-  //check open times
+  //check open times every minute
   checkOpen();
   setInterval(checkOpen, 60000);
+
+  //update Foursquare every 5 minutes
+  updateFoursquare();
+  setInterval(updateFoursquare, 300000);
 });

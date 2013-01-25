@@ -34,10 +34,13 @@ body, html {
 	margin: 20px;
 	float: left;
 }
-.fs-three h2 {
+.fs-three a {
+	display: block;
 	font-size: 24px;
 	margin: 15px 0 0 0;
 	font-weight: 400;
+	text-decoration: none;
+	color: white;
 }
 .fs-three cite {
 	font-size: 13px;
@@ -79,7 +82,7 @@ h3 {
 	top: 20px;
 	font-size: 15px;
 }
-.place[data-status="open"] .status] {
+.place[data-status="open"] .status {
 	width: 18px;
 	height: 18px;
 	background: url(img/open.png) no-repeat;
