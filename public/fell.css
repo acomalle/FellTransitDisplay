@@ -102,6 +102,27 @@ h3 {
 	top: 20px;
 	font-size: 15px;
 }
-
-
-
+.muni {
+	float: left;
+	clear: both;
+}
+.busnumber {
+	font-size: 48px;
+	float: left;
+	padding: 15px 10px;
+}
+.nextbus {
+	font-size: 60px;
+	float: left;
+	padding: 5px 10px;
+}
+.laterbuses {
+	float: left;
+	padding: 0 10px;
+}
+.laterbuses p.upper {
+	margin: 20px 0 0 0;
+}
+.laterbuses p.under {
+	margin: 5px 0 0 0;
+}
