@@ -205,9 +205,12 @@ function checkOpen(){
   nearby.forEach(function(place){
     var divName = place.name.replace(/\s/g, ''),
         div = $('#' + divName),
-        hours = place.hours.all || place.hours[currentDay] || null,
-        currentHours = (currentHours < 4) ? (currentHours + 24) : currentHours,
+        hours = place.hours.all || place.hours[currentDay],
         status;
+
+    if(currentHours < 4){
+      currentHours += 24;
+    }
 
 
     if(!div.length) {
