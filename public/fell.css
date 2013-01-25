@@ -66,9 +66,6 @@ h3 {
 	text-transform: uppercase;
 }
 .place {
-	border-top: 2px solid #2f363c;
-	border-right: 2px solid #2f363c;
-	border-left: 2px solid #2f363c;
 	display: block;
 	float: left;
 	clear: both;
@@ -108,7 +105,12 @@ h3 {
 .muni {
 	float: left;
 	clear: both;
-	margin: 10px 0 0 10px;
+	margin: 2px 0 0 20px;
+}
+.muni:first-child {
+	margin: 20px 0 0 20px;
+	float: left;
+	clear: both;
 }
 .busnumber {
 	font-size: 48px;
@@ -149,8 +151,17 @@ h3 {
 	margin: 0;
 }
 .twentyone {
-	background: #910089;
+	background: #b304a9;
 }
 .seventyone {
-	background: #009163;
+	background: #00b77d;
+}
+.five {
+	background: #dca102;
+}
+.six {
+	background: #0f6fb9;
+}
+.then {
+	background: #b4304f;
 }
