@@ -209,16 +209,16 @@ h3 {
 	height: 100%;
 }
 #instagram .scroll-wrap {
-	height: 100%;
-	width: 100%;
 	position: absolute;
 }
 #instagram .picture {
 	width: 100%;
 	position: relative;
+	overflow: hidden;
 }
 #instagram .picture img {
 	width: 100%;
+	float: left;
 }
 #instagram .picture .userInfo {
 	box-sizing: border-box;

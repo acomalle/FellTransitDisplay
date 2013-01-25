@@ -325,7 +325,12 @@ function updateInstagram() {
 function scrollInstagram() {
   var height = $('#instagram').width(),
       top = parseInt($('#instagram .scroll-wrap').css('top'), 10) || 0;
-  $('#instagram .scroll-wrap').animate({top: (top - height)}, 800);
+  if($('#instagram .scroll-wrap').height() > (top*-1 + $(window).height())) {
+    var offset = top - height;
+  } else {
+    var offset = 0;
+  }
+  $('#instagram .scroll-wrap').animate({top: offset}, 800);
 }
 
 
@@ -352,4 +357,5 @@ $(function(){
 
   //scroll Instagram every 15 seconds
   setInterval(scrollInstagram, 15000);
+  
 });
