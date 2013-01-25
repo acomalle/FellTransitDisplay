@@ -5,6 +5,11 @@ var express = require('express')
   , db = mongoose.connect(mongoURI)
   , RedisStore = require('connect-redis')(express);
 
+  
+try {
+  var keys = require('./keys');
+} catch(e) {}
+
 
 module.exports = function(app){
   app.configure(function(){
@@ -39,4 +44,9 @@ module.exports = function(app){
       .enable('prod')
       .set('domain', 'sms.solokotakita.org');
   });
+
+  app.configure(function() {
+    var foursquareToken = process.env.FOURSQUARE_TOKEN || keys.foursquareToken;
+    app.set('foursquareToken', foursquareToken);
+  })
 }

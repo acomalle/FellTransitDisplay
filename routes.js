@@ -1,19 +1,23 @@
 var async = require('async')
   , _ = require('underscore')
   , moment = require('moment')
-  , survey = require('node-foursquare')
   , request = require('request');
 
 
 module.exports = function routes(app){
 
   app.get('/api/foursquare.json', function(req, res){
-    /*request.post({
+    request.get({
         url: 'https://api.foursquare.com/v2/checkins/recent'
-      , method: 'POST'
-      , 
-    })*/
-    res.json({'test': true});
+      , qs: {
+            oauth_token: app.set('foursquareToken')
+          , v: '20130125'
+          , ll: '37.77415,-122.43635'
+        }
+      , json: true
+    }, function(e, response, body) {
+      res.json(body);
+    });
   });
 
   //Nothing specified
