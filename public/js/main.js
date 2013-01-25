@@ -200,18 +200,19 @@ function getMUNI(){
 
 function checkOpen(){
   var currentTime = new Date(),
+      currentMinutes = currentTime.getMinutes(),
       currentHours = currentTime.getHours(),
       currentDay = currentTime.getDay();
+
+  if(currentHours < 4){
+    currentHours += 24;
+    currentDay -= 1;
+  }
   nearby.forEach(function(place){
     var divName = place.name.replace(/\s/g, ''),
         div = $('#' + divName),
         hours = place.hours.all || place.hours[currentDay],
         status;
-
-    if(currentHours < 4){
-      currentHours += 24;
-    }
-
 
     if(!div.length) {
       var div = $('<div>')
@@ -223,16 +224,20 @@ function checkOpen(){
           .addClass('storeName')
           .attr('href', place.url)
           .html(place.name))
+        .append($('<span>')
+          .addClass('countdown'))
         .appendTo('#nearby');
     }
-    console.log(hours)
-    console.log(currentHours)
+
     if(currentHours < hours[0] || currentHours > hours[1]) {
       status = 'closed';
+      $('.countdown', div).empty();
     } else if(currentHours == (hours[1] - 1) ) {
       status = 'closing';
+      $('.countdown', div).html(((currentMinutes - 60) * -1) + " min");
     } else {
       status = 'open';
+      $('.countdown', div).empty();
     }
     $('.status', div)
       .removeClass('open closed closing')
