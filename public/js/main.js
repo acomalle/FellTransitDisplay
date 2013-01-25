@@ -208,11 +208,6 @@ function checkOpen(){
         currentHours = (currentHours < 4) ? currentHours + 24 : currentHours,
         status;
 
-    if(currentHours < hours[0] || currentHours > hours[1]) {
-      //not open yet
-      status = 'closed';
-    } else if(currentHours)
-
 
     if(!div.length) {
       var div = $('<div>')
@@ -225,9 +220,19 @@ function checkOpen(){
           .attr('href', place.url)
           .html(place.name))
         .appendTo('#nearby');
-    } else {
-
     }
+
+    if(currentHours < hours[0] || currentHours > hours[1]) {
+      status = 'closed';
+    } else if(currentHours == (hours[1] - 1) ) {
+      status = 'closing';
+    } else {
+      status = 'open';
+    }
+    $('.status', div)
+      .removeClass('open closed closing')
+      .addClass(status);
+
   });
 }
 
