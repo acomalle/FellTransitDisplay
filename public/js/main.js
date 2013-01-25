@@ -17,13 +17,13 @@ var nearby = [
       name: 'Little Star'
     , url: 'http://www.yelp.com/biz/little-star-pizza-san-francisco'
     , hours: {
-        mon: [17,22]
-      , tue: [17,22]
-      , wed: [17,22]
-      , thu: [17,22]
-      , fri: [12,23]
-      , sat: [12,23]
-      , sun: [12,22]
+        0: [17,22]
+      , 1: [17,22]
+      , 2: [17,22]
+      , 3: [17,22]
+      , 4: [12,23]
+      , 5: [12,23]
+      , 6: [12,22]
     }
   },
 ]
@@ -145,13 +145,13 @@ function getMUNI(){
 }
 
 function checkOpen(){
+  var currentTime = new Date(),
+      currentHours = currentTime.getHours();
   nearby.forEach(function(place){
     var divName = place.name.replace(/\s/g, ''),
-        div = $('#' + divName),
-        currentTime = new Date(),
-        currentHours = currentTime.getHours();
+        div = $('#' + divName);
 
-    console.log(currentHours)
+    if(currentHours < place.hours[0])
 
     if(!div.length) {
       var div = $('<div>')
