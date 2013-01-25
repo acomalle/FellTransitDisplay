@@ -175,8 +175,12 @@ h3 {
 	margin: 5px;
 	line-height: 90px;
 }
-#muniNOWL_4951 .busnumber, #muni71L_4951 .busnumber {
+#muniNOWL_4951 .busnumber{
 	line-height: 70px;
+	position: relative;
+}
+#muni71L_4951 .busnumber {
+	line-height: 85px;
 	position: relative;
 }
 #muniNOWL_4951 .busnumber span, #muni71L_4951 .busnumber span {
