@@ -17,13 +17,13 @@ var nearby = [
       name: 'Little Star'
     , url: 'http://www.yelp.com/biz/little-star-pizza-san-francisco'
     , hours: {
-        0: [17,22]
-      , 1: [17,22]
+        1: [17,22]
       , 2: [17,22]
       , 3: [17,22]
-      , 4: [12,23]
+      , 4: [17,22]
       , 5: [12,23]
-      , 6: [12,22]
+      , 6: [12,23]
+      , 0: [12,22]
     }
   },
 ]
@@ -151,12 +151,15 @@ function checkOpen(){
   nearby.forEach(function(place){
     var divName = place.name.replace(/\s/g, ''),
         div = $('#' + divName),
-        hours = place.hours.all || 
-    if(place.hours.all) {
+        hours = place.hours.all || place.hours[currentDay] || null,
+        currentHours = (currentHours < 4) ? currentHours + 24 : currentHours,
+        status;
 
-    } else {
+    if(currentHours < hours[0] || currentHours > hours[1]) {
+      //not open yet
+      status = 'closed';
+    } else if(currentHours)
 
-    }
 
     if(!div.length) {
       var div = $('<div>')
@@ -164,8 +167,9 @@ function checkOpen(){
         .attr('id', 'divName')
         .append($('<div>')
           .addClass('status'))
-        .append($('<div>')
+        .append($('<a>')
           .addClass('storeName')
+          .attr('href', place.url)
           .html(place.name))
         .appendTo('#nearby');
     } else {
