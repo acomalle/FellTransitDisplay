@@ -135,7 +135,7 @@ h3 {
 	margin-left: 2px;
 	background: rgba(0,0,0,0.1);
 }
-.laterbuses p.upper {
+.laterbuses div:first-child {
 	height: 48px;
 	width: 50px;
 	text-align: center;
@@ -143,25 +143,27 @@ h3 {
 	margin: 0;
 	border-bottom: 2px solid #2f363c;
 }
-.laterbuses p.under {
+.laterbuses div {
 	height: 50px;
 	width: 50px;
 	text-align: center;
 	line-height: 50px;
 	margin: 0;
 }
-.twentyone {
+#muni21_4992 .busnumber {
 	background: #b304a9;
 }
-.seventyone {
+#muni71_4951 .busnumber,
+#muni71L_4951 .busnumber {
 	background: #00b77d;
 }
-.five {
+#muni5_5390 .busnumber {
 	background: #dca102;
 }
-.six {
+#muni6_4951 .busnumber {
 	background: #0f6fb9;
 }
-.then {
+#muniN_7318 .busnumber,
+#muniNOWL_4951 .busnumber {
 	background: #b4304f;
 }

@@ -95,9 +95,9 @@ function getMUNI(){
               .addClass('nextbus time'))
             .append($('<div>')
               .addClass('laterbuses')
-              .append($('<span>')
+              .append($('<div>')
                 .addClass('time'))
-              .append($('<span>')
+              .append($('<div>')
                 .addClass('time')))
             .appendTo('#times');
         } else {
