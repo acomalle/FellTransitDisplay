@@ -79,7 +79,23 @@ var nearby = [
         all: [7,21]
     }
   },
-]
+];
+
+
+jQuery.fn.orderBy = function(keySelector)
+{
+    return this.sort(function(a,b)
+    {
+        a = keySelector.apply(a);
+        b = keySelector.apply(b);
+        if (a > b)
+            return 1;
+        if (a < b)
+            return -1;
+        return 0;
+    });
+};
+
 
 function updateClock() {
   var currentTime = new Date(),
@@ -103,59 +119,62 @@ function updateClock() {
 function getMUNI(){
   //Define Muni Roures
   var MUNIroutes = [
-  {
-    route: 5,
-    stop: 5390
-  },
-  {
-    route: 6,
-    stop: 4951
-  },
-  {
-    route: 21,
-    stop: 4992
-  },
-  {
-    route: 22,
-    stop: 4632
-  },
-  {
-    route: 71,
-    stop: 4951
-  },
-  {
-    route: '71L',
-    stop: 4951
-  },
-  {
-    route: 'N',
-    stop: 7318
-  },
-  {
-    route: 'N OWL',
-    stop: 4951
-  },
+    {
+      route: 5,
+      stop: 5390
+    },
+    {
+      route: 6,
+      stop: 4951
+    },
+    {
+      route: 21,
+      stop: 4992
+    },
+    {
+      route: 22,
+      stop: 4632
+    },
+    {
+      route: 71,
+      stop: 4951
+    },
+    {
+      route: '71L',
+      stop: 4951
+    },
+    {
+      route: 'N',
+      stop: 7318
+    },
+    {
+      route: 'N OWL',
+      stop: 4951
+    }
   ];
   
-  var url = 'http://webservices.nextbus.com/service/publicXMLFeed';
-  
-  function getRoute(route, stop){
-    //Request Departures
+  var url = 'http://webservices.nextbus.com/service/publicXMLFeed',
+      callbackCount = 0;
+
+  //Loop through all routes
+  MUNIroutes.forEach(function(route) {
     $.ajax({
       url: url,
       data: {
         command: 'predictions',
         a: 'sf-muni',
-        r: route,
-        s: stop
+        r: route.route,
+        s: route.stop
       },
       dataType: 'xml',
       success:function(result){
-        var divName = 'muni' + route.toString().replace(/\s/g, '') + '_' + stop;
-        var div = $('#' + divName);
+        var divName = 'muni' + route.route.toString().replace(/\s/g, '') + '_' + route.stop,
+            div = $('#' + divName);
+
+        callbackCount++;
 
         if(!div.length) {
-          var routeName = route.toString().replace(/OWL/g, '<span>OWL</span>'),
+          var routeName = route.route.toString().replace(/\s\D+/g, "<span>$&</span>").replace(/(\d)(L)/g, "$1<span>$2</span>"),
               div = $('<div>')
                 .addClass('muni')
                 .attr('id', divName)
@@ -177,25 +196,23 @@ function getMUNI(){
         }
         
         //Check if route is still running
-        div.toggle($(result).find('prediction').length > 0)
+        div.toggle($(result).find('prediction').length > 0);
         
         var idx = 0;
         $(result).find('prediction').each(function(i, data){
           //Limit to 3 results, only show times less than 100, don't show results that are 0
           if(idx < 3 && $(data).attr('minutes') < 100 && $(data).attr('minutes') > 0){
             $('.time', div).eq(idx).html($(data).attr('minutes'));
-            
             idx++;
           }
         });
+
+        if(callbackCount == MUNIroutes.length) {
+          $(".muni").orderBy(function() {return +$('.nextbus', this).text();}).appendTo("#times");
+        }
       }
     });
-  }
-
-  //Loop through all routes
-  for(var i in MUNIroutes){
-    getRoute(MUNIroutes[i].route, MUNIroutes[i].stop);
-  }
+  });
 }
 
 function checkOpen(){
@@ -244,6 +261,9 @@ function checkOpen(){
       .addClass(status);
 
   });
+
+  //sort
+  $(".contest_entry").orderBy(function() {return +$(this).text();}).appendTo("#parent_div");
 }
 
 
