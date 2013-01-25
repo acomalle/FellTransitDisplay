@@ -34,9 +34,12 @@ body, html {
 .fs-three h2 {
 	font-size: 24px;
 	margin: 15px 0 0 0;
+	font-weight: 400;
 }
 .fs-three cite {
 	font-size: 13px;
 	margin: 0;
 	font-weight: 300;
+	opacity: 0.75;
+	padding: 0 10px 0 0;
 }
