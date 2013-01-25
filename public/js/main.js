@@ -26,6 +26,59 @@ var nearby = [
       , 0: [12,22]
     }
   },
+  {
+      name: 'Corner store - New Star-Ell Liquor'
+    , url: 'http://www.yelp.com/biz/new-star-ell-liquor-san-francisco'
+    , hours: {
+      all: [10,26]
+    }
+  },
+  {
+      name: 'The Little Chihuahua'
+    , url: 'http://www.yelp.com/biz/the-little-chihuahua-san-francisco'
+    , hours: {
+        1: [11,23]
+      , 2: [11,23]
+      , 3: [11,23]
+      , 4: [11,23]
+      , 5: [11,23]
+      , 6: [10,23]
+      , 0: [10,23]
+    }
+  },
+  {
+      name: 'Stelladoro Pizza'
+    , url: 'http://www.yelp.com/biz/stelladoro-pizza-restaurant-san-francisco'
+    , hours: {
+        1: [16,22]
+      , 2: [16,22]
+      , 3: [16,22]
+      , 4: [16,22]
+      , 5: [16,22]
+      , 6: [16,22]
+      , 0: [16,21]
+    }
+  },
+  {
+      name: 'Alamo Square Market & Deli'
+    , url: 'http://www.yelp.com/biz/alamo-square-market-and-deli-san-francisco-2'
+    , hours: {
+        1: [8,21]
+      , 2: [8,21]
+      , 3: [8,21]
+      , 4: [8,21]
+      , 5: [8,22]
+      , 6: [9,22]
+      , 0: [9,21]
+    }
+  },
+  {
+      name: 'Haight Street Market'
+    , url: 'http://www.yelp.com/biz/haight-street-market-san-francisco'
+    , hours: {
+        all: [7,21]
+    }
+  },
 ]
 
 function updateClock() {
