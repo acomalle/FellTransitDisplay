@@ -42,7 +42,7 @@ module.exports = function(app){
       .use(connect.session({ store: new RedisStore, secret: 'keybsdfsdfoardy cat' }))
       .use(express.errorHandler({dumpExceptions: true, showStack: true}))
       .enable('prod')
-      .set('domain', 'sms.solokotakita.org');
+      .set('domain', 'fell-transit-display.herokuapp.com');
   });
 
   app.configure(function() {
