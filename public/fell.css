@@ -19,16 +19,15 @@ body, html {
 	float: left;
 	width: 33.333%;
 	height: 95px;
-	border-bottom: 3px solid;
 }
-#foursquare .mikael {
-	border-color: #00b4ff;
+#mikael_foursquare {
+	border-bottom: 3px solid #00b4ff;
 }
-#foursquare .trucy {
-	border-color: #de00ff;
+#trucy_foursquare {
+	border-bottom: 3px solid #de00ff;
 }
-#foursquare .joakim {
-	border-color: #00ff24;
+#joakim_foursquare {
+	border-bottom: 3px solid #00ff24;
 }
 #foursquare .fs-photo {
 	margin: 20px;

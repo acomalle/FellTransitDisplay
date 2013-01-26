@@ -355,7 +355,7 @@ $(function(){
   updateInstagram();
   setInterval(updateInstagram, 1800000);
 
-  //scroll Instagram every 15 seconds
-  setInterval(scrollInstagram, 15000);
+  //scroll Instagram every 5 seconds
+  setInterval(scrollInstagram, 5000);
   
 });
