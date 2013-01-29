@@ -246,7 +246,9 @@ function updatePlaces(){
         .appendTo('#nearby');
     }
 
-    if(currentHours < hours[0] || currentHours >= hours[1]) {
+    if(hours[1] - hours[0] == 24) {
+      status = 'open';
+    } else if(currentHours < hours[0] || currentHours >= hours[1]) {
       status = 'closed';
     } else if(currentHours == (hours[1] - 1) ) {
       status = 'closing';
@@ -323,14 +325,12 @@ function updateInstagram() {
 }
 
 function scrollInstagram() {
-  var height = $('#instagram').width(),
-      top = parseInt($('#instagram .scroll-wrap').css('top'), 10) || 0;
-  if($('#instagram .scroll-wrap').height() > (top*-1 + $(window).height())) {
-    var offset = top - height;
-  } else {
-    var offset = 0;
-  }
-  $('#instagram .scroll-wrap').animate({top: offset}, 800);
+  var first = $('#instagram .scroll-wrap .picture:first-child');
+  $('#instagram .scroll-wrap').animate({top: -$(first).height()}, 800, function(){
+    $('#instagram .scroll-wrap')
+      .append(first)
+      .css('top', 0);
+  });
 }
 
 
