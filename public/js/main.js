@@ -119,37 +119,41 @@ function updateClock() {
 function updateMUNI(){
   //Define Muni Roures
   var MUNIroutes = [
-    {
-      route: 5,
-      stop: 5390
-    },
+    
     {
       route: 6,
-      stop: 4951
+      stop: 4958
+    },
+   
+    {
+      route: 33,
+      stop: 3665
     },
     {
-      route: 21,
-      stop: 4992
+      route: 43,
+      stop: 5713
     },
-    {
-      route: 22,
-      stop: 4632
-    },
+
     {
       route: 71,
-      stop: 4951
+      stop: 4958
     },
     {
       route: '71L',
-      stop: 4951
+      stop: 4958
     },
     {
       route: 'N',
-      stop: 7318
+      stop:3911
     },
+     /*{
+      //Outbound N
+      route: 'N',
+      stop:3909
+    },*/
     {
       route: 'N OWL',
-      stop: 4951
+      stop: 4958
     }
   ];
   

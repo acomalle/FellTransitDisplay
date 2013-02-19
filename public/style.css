@@ -161,21 +161,21 @@ h3 {
 	line-height: 50px;
 	margin: 0;
 }
-#muni21_4992 .busnumber {
+#muni33_3665 .busnumber {
 	background: #b304a9;
 }
-#muni71_4951 .busnumber,
-#muni71L_4951 .busnumber {
+#muni71_4958 .busnumber,
+#muni71L_4958 .busnumber {
 	background: #00b77d;
 }
-#muni5_5390 .busnumber {
+#muni43_5713 .busnumber {
 	background: #dca102;
 }
-#muni6_4951 .busnumber {
+#muni6_4958 .busnumber {
 	background: #0f6fb9;
 }
-#muniN_7318 .busnumber,
-#muniNOWL_4951 .busnumber {
+#muniN_3911 .busnumber,
+#muniNOWL_4958 .busnumber {
 	background: #b4304f;
 	border-radius: 50px;
 	height: 90px;
@@ -183,15 +183,15 @@ h3 {
 	margin: 5px;
 	line-height: 90px;
 }
-#muniNOWL_4951 .busnumber{
+#muniNOWL_4958 .busnumber{
 	line-height: 70px;
 	position: relative;
 }
-#muni71L_4951 .busnumber {
+#muni71L_4958 .busnumber {
 	line-height: 85px;
 	position: relative;
 }
-#muniNOWL_4951 .busnumber span, #muni71L_4951 .busnumber span {
+#muniNOWL_4958 .busnumber span, #muni71L_4958 .busnumber span {
 	font-size: 14px;
 	margin: 0;
 	position: absolute;
@@ -201,9 +201,7 @@ h3 {
 	width: 100%;
 	text-align: center;
 }
-#muni22_4632 .busnumber {
-	background: #739e01;
-}
+
 #instagram {
 	position: relative;
 	overflow: hidden;
