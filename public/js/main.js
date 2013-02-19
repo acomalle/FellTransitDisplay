@@ -1,9 +1,9 @@
 var nearby = [
   {
-      name: 'Falletti Foods'
-    , url: 'http://www.yelp.com/biz/falletti-foods-san-francisco'
+      name: 'Cha Cha Cha'
+    , url: 'http://www.yelp.com/biz/cha-cha-cha-san-francisco-4'
     , hours: {
-        all: [7,21]
+        all: [11.5,23]
     }
   },
   {
@@ -14,62 +14,62 @@ var nearby = [
     }
   },
   {
-      name: 'Little Star'
-    , url: 'http://www.yelp.com/biz/little-star-pizza-san-francisco'
+      name: 'Citrus Club'
+    , url: 'http://www.yelp.com/biz/the-citrus-club-san-francisco'
     , hours: {
-        1: [17,22]
-      , 2: [17,22]
-      , 3: [17,22]
-      , 4: [17,22]
-      , 5: [12,23]
-      , 6: [12,23]
-      , 0: [12,22]
+        1: [11.5,22]
+      , 2: [11.5,22]
+      , 3: [11.5,22]
+      , 4: [11.5,22]
+      , 5: [11.5,23]
+      , 6: [11.5,23]
+      , 0: [11.5,22]
     }
   },
   {
-      name: 'Corner store - New Star-Ell Liquor'
-    , url: 'http://www.yelp.com/biz/new-star-ell-liquor-san-francisco'
+      name: 'Blue Front Cafe'
+    , url: 'http://www.yelp.com/biz/blue-front-cafe-san-francisco'
     , hours: {
-      all: [10,26]
+      all: [7.5,22]
     }
   },
   {
-      name: 'The Little Chihuahua'
-    , url: 'http://www.yelp.com/biz/the-little-chihuahua-san-francisco'
+      name: 'Hobson\'s Choice'
+    , url: 'http://www.yelp.com/biz/hobsons-choice-san-francisco'
     , hours: {
-        1: [11,23]
-      , 2: [11,23]
-      , 3: [11,23]
-      , 4: [11,23]
-      , 5: [11,23]
-      , 6: [10,23]
-      , 0: [10,23]
+        1: [14,26]
+      , 2: [14,26]
+      , 3: [14,26]
+      , 4: [14,26]
+      , 5: [14,26]
+      , 6: [12,26]
+      , 0: [12,26]
     }
   },
   {
-      name: 'Stelladoro Pizza'
-    , url: 'http://www.yelp.com/biz/stelladoro-pizza-restaurant-san-francisco'
+      name: 'Magnolia'
+    , url: 'http://www.yelp.com/biz/magnolia-pub-and-brewery-san-francisco'
     , hours: {
-        1: [16,22]
-      , 2: [16,22]
-      , 3: [16,22]
-      , 4: [16,22]
-      , 5: [16,22]
-      , 6: [16,22]
-      , 0: [16,21]
+        1: [11,24]
+      , 2: [11,24]
+      , 3: [11,24]
+      , 4: [11,24]
+      , 5: [11,25]
+      , 6: [10,25]
+      , 0: [10,24]
     }
   },
   {
-      name: 'Alamo Square Market & Deli'
-    , url: 'http://www.yelp.com/biz/alamo-square-market-and-deli-san-francisco-2'
+      name: 'Russ Cleaners'
+    , url: 'http://www.yelp.com/biz/russ-cleaners-and-laundry-san-francisco-2'
     , hours: {
-        1: [8,21]
-      , 2: [8,21]
-      , 3: [8,21]
-      , 4: [8,21]
-      , 5: [8,22]
-      , 6: [9,22]
-      , 0: [9,21]
+        1: [8,19]
+      , 2: [8,19]
+      , 3: [8,19]
+      , 4: [8,19]
+      , 5: [8,19]
+      , 6: [10,17]
+      , 0: [0,0]
     }
   },
   {
