@@ -4,7 +4,9 @@ var express = require('express')
   
 try {
   var keys = require('./keys');
-} catch(e) {}
+} catch(e) {
+  var keys = {};
+}
 
 
 module.exports = function(app){
@@ -40,9 +42,9 @@ module.exports = function(app){
   });
 
   app.configure(function() {
-    var foursquareToken = process.env.FOURSQUARE_TOKEN || keys.foursquareToken;
+    var foursquareToken = process.env.FOURSQUARE_TOKEN || keys.foursquareToken || "";
     app.set('foursquareToken', foursquareToken);
-    var instagramToken = process.env.INSTAGRAM_TOKEN || keys.instagramToken;
+    var instagramToken = process.env.INSTAGRAM_TOKEN || keys.instagramToken || "";
     app.set('instagramToken', instagramToken);
   })
 }
