@@ -8,31 +8,22 @@ body, html {
 	height: 100%;
 	overflow: hidden;
 }
-#foursquare {
+#baseball {
 	width: 100%;
 	height: 95px;
 	position: relative;
 	top: 0;
 	left: 0;
+	border-bottom: 2px solid orange;
 }
-#foursquare .fs-three {
+#baseball .fs-three {
 	float: left;
 	width: 33.333%;
 	height: 95px;
 }
-#mikael_foursquare {
-	border-bottom: 3px solid #00b4ff;
-}
-#trucy_foursquare {
-	border-bottom: 3px solid #de00ff;
-}
-#joakim_foursquare {
-	border-bottom: 3px solid #00ff24;
-}
-#foursquare .fs-photo {
-	margin: 20px;
-	float: left;
-}
+
+
+
 .fs-three a {
 	display: block;
 	font-size: 24px;

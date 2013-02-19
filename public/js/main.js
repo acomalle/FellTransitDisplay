@@ -279,28 +279,19 @@ function updatePlaces(){
   }).appendTo("#nearby");
 }
 
-function updateFoursquare() {
-  $.getJSON('/api/foursquare.json', function(data) {
-    if(data && data.response) {
-      data.response.recent.forEach(function(checkin) {
-        var div;
-        if(checkin.user.id == "4103624") {
-          div = $('#joakim_foursquare');
-        } else if(checkin.user.id == "2045886") {
-          div = $('#trucy_foursquare');
-        } else if(checkin.user.id == "2562440") {
-          div = $('#mikael_foursquare');
+function updateBaseball() {
+  $.getJSON('/api/baseball.json', function(data) {
+    if(data) {
+      var idx=0;
+      data.forEach(function(game){
+        if(idx<3){
+          $('<div>')
+            .addClass("fs-three")
+            .html(game.time_local+" "+game.venue+", "+game.location)
+            .appendTo("#baseball")
+          idx++
         }
-        if(div) {
-          $('a', div)
-            .html(checkin.venue.name)
-            .attr('href', checkin.venue.canonicalUrl);
-          var createdAt = new Date(checkin.createdAt * 1000);
-          $('cite', div)
-            .attr('title', createdAt.toISOString());
-        }
-      });
-      $('#foursquare cite').timeago();
+      })
     }
   });
 }
@@ -351,9 +342,9 @@ $(function(){
   updatePlaces();
   setInterval(updatePlaces, 60000);
 
-  //update Foursquare every 5 minutes
-  updateFoursquare();
-  setInterval(updateFoursquare, 300000);
+  //update Giants schedule everyday 
+  updateBaseball();
+  setInterval(updateBaseball, 86400000);
 
   //update Instagram every 30 minutes 
   updateInstagram();

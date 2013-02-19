@@ -6,13 +6,13 @@ var async = require('async')
 
 module.exports = function routes(app){
 
-  app.get('/api/foursquare.json', function(req, res){
+  app.get('/api/baseball.json', function(req, res){
+    var now=new Date();
+    var month=now.getMonth()+1;
+    var year=now.getFullYear();
     request.get({
-        url: 'https://api.foursquare.com/v2/checkins/recent'
+        url: 'http://sanfrancisco.giants.mlb.com/gen/schedule/sf/'+year+'_'+month+'.json'
       , qs: {
-            oauth_token: app.set('foursquareToken')
-          , v: '20130125'
-          , ll: '37.77415,-122.43635'
         }
       , json: true
     }, function(e, response, body) {
