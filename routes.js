@@ -21,7 +21,7 @@ module.exports = function routes(app){
   });
 
   app.get('/api/instagram.json', function(req, res){
-    var users = [403770, 8625420, 728636],
+    var users = [403770, 8625420, 728636,50651611,263428,30921174,423595,32411825,201765534,146041273,677080,30926690],
         pictures = [];
     async.forEach(users, function(user, cb){
       request.get({
